@@ -1,0 +1,9 @@
+.box {
+    border: 10px solid black;
+    height: 20vh;
+}
+
+.letter-style {
+    font-size: 80px;
+
+}
