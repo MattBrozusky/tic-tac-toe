@@ -1,5 +1,51 @@
+/******************
+Box Style
+******************/
+#box1 {
+    border-style: solid;
+    border-width: 6px 3px 3px 6px;
+}
+
+#box2 {
+    border-style: solid;
+    border-width: 6px 3px 3px 3px;
+}
+
+#box3 {
+    border-style: solid;
+    border-width: 6px 6px 3px 3px;
+}
+
+#box4 {
+    border-style: solid;
+    border-width: 3px 3px 3px 6px;
+}
+
+#box5 {
+    border: 3px solid;
+}
+
+#box6 {
+    border-style: solid;
+    border-width: 3px 6px 3px 3px;
+}
+
+#box7 {
+    border-style: solid;
+    border-width: 3px 3px 6px 6px;
+}
+
+#box8 {
+    border-style: solid;
+    border-width: 3px 3px 6px 3px;
+}
+
+#box9 {
+    border-style: solid;
+    border-width: 3px 6px 6px 3px;
+}
+
 .box {
-    border: 10px solid black;
     height: 20vh;
 }
 
@@ -7,3 +53,5 @@
     font-size: 80px;
 
 }
+
+
