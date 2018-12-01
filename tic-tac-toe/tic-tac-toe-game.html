@@ -13,55 +13,57 @@
             <h1 class="mt-5"> Tic Tac Toe!</h1>
         </header>
         <section class="row">
-            <button class="btn btn-primary col-4 offset-4 mt-4">RESET</button>
+            <button class="btn btn-primary col-4 offset-4 mt-4" id="reset">RESET</button>
         </section>
         <div id="main-body">
 
-            <section class="row mt-4">
+            <section class="row mt-4" id="player-btns">
                 <button class="btn btn-primary col-2 offset-3" id="one-player">One Player</button>
                 <button class="btn btn-primary col-2 offset-2" id="two-player">Two Player</button>
             </section>
 
         </div>
-        <section class="row mt-4">
-            <div class="col-3" id="player-x">
+        <div class="invisible" id="game-container">
+            <section class="row mt-4">
+                <div class="col-3" id="player-x">
 
-            </div>
-            <div class="col-2 box letter-style" id="box1">
-                <span></span>
-            </div>
-            <div class="col-2 box letter-style" id="box2">
-                <span></span>
-            </div>
-            <div class="col-2 box letter-style" id="box3">
-                <span></span>
-            </div>
-            <div class="col-3" id="player-o">
+                </div>
+                <div class="col-2 box letter-style" id="box1">
+                    <span></span>
+                </div>
+                <div class="col-2 box letter-style" id="box2">
+                    <span></span>
+                </div>
+                <div class="col-2 box letter-style" id="box3">
+                    <span></span>
+                </div>
+                <div class="col-3" id="player-o">
 
-            </div>
-        </section>
-        <section class="row">
-            <div class="col-2 offset-3 box letter-style" id="box4">
-                <span></span>
-            </div>
-            <div class="col-2 box letter-style" id="box5">
-                <span></span>
-            </div>
-            <div class="col-2 box letter-style" id="box6">
-                <span></span>
-            </div>
-        </section>
-        <section class="row">
-            <div class="col-2 offset-3 box letter-style" id="box7">
-                <span></span>
-            </div>
-            <div class="col-2 box letter-style" id="box8">
-                <span></span>
-            </div>
-            <div class="col-2 box letter-style" id="box9">
-                <span></span>
-            </div>
-        </section>
+                </div>
+            </section>
+            <section class="row">
+                <div class="col-2 offset-3 box letter-style" id="box4">
+                    <span></span>
+                </div>
+                <div class="col-2 box letter-style" id="box5">
+                    <span></span>
+                </div>
+                <div class="col-2 box letter-style" id="box6">
+                    <span></span>
+                </div>
+            </section>
+            <section class="row">
+                <div class="col-2 offset-3 box letter-style" id="box7">
+                    <span></span>
+                </div>
+                <div class="col-2 box letter-style" id="box8">
+                    <span></span>
+                </div>
+                <div class="col-2 box letter-style" id="box9">
+                    <span></span>
+                </div>
+            </section>
+        </div>
     </div>
 
 

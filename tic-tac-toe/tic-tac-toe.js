@@ -1,39 +1,48 @@
 "use strict";
 $(document).ready(function () {
 
-
-
-
-
+//Global constants
     const box = $(".box");
     let move = 1;
     let play = true;
 
-    // $('#two-player').on('click', function () {
-    //
-    // });
 
+// Reset and play Buttons
+    $('#reset').on('click', function () {
+        $('#player-btns').removeClass('invisible');
+        $('#game-container').addClass('invisible');
+        for (let i = 1; i <= 9; i++){
+            $('#box' + i).html('');
+        }
+        move = 1;
+        box.on("click", playGame);
+        box.on('click', checkForWinner);
+    });
 
-    box.on("click", function () {
+    $('#two-player').on('click', function () {
+        $('#game-container').removeClass('invisible');
+        $('#player-btns').addClass('invisible');
+    });
 
-        if (move % 2 !== 2 % 2 && ($(this).html() !== "X" || $(this).html() !== "O")) {
+//Game Functionality
+    function playGame() {
+        if (move % 2 === 1) {
             $(this, "span").append("X");
             if ($(this, "span").html("X")) {
                 $(this).off('click');
             }
             move += 1;
 
-        } else if (move % 2 === 2 % 2 && ($(this).html() !== "X" || $(this).html() !== "O")) {
+        } else if (move % 2 === 0) {
             $(this, "span").append("O");
             if ($(this, "span").html("O")) {
                 $(this).off('click');
             }
             move += 1;
         }
+    }
 
-    });
-
-    box.on('click', function checkForWinner() {
+    function checkForWinner() {
         let box1 = $('#box1'), box2 = $('#box2'), box3 = $('#box3'), box4 = $('#box4'), box5 = $('#box5'), box6 = $('#box6'), box7 = $('#box7'), box8 = $('#box8'), box9 = $('#box9');
 
         if (box1.html() === "X" && box2.html() === "X" && box3.html() === "X" || box1.html() === "O" && box2.html() === "O" && box3.html() === "O"){
@@ -68,8 +77,11 @@ $(document).ready(function () {
             console.log(`Congrats ${box3.html()}! You won!`);
             box.off('click');
         }
+    }
 
-    });
 
+//Initial Start
+    box.on("click", playGame);
+    box.on('click', checkForWinner);
 
 });
