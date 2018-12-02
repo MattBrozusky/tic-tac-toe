@@ -4,18 +4,19 @@ $(document).ready(function () {
 //Global constants
     const box = $(".box");
     let move = 1;
-    let play = true;
 
 
 // Reset and play Buttons
     $('#reset').on('click', function () {
         $('#player-btns').removeClass('invisible');
         $('#game-container').addClass('invisible');
+        box.off('click', playGame);
+        box.off('click', checkForWinner);
         for (let i = 1; i <= 9; i++){
             $('#box' + i).html('');
         }
         move = 1;
-        box.on("click", playGame);
+        box.on('click', playGame);
         box.on('click', checkForWinner);
     });
 
@@ -27,15 +28,15 @@ $(document).ready(function () {
 //Game Functionality
     function playGame() {
         if (move % 2 === 1) {
-            $(this, "span").append("X");
-            if ($(this, "span").html("X")) {
+            $(this).append("X");
+            if ($(this).html("X")) {
                 $(this).off('click');
             }
             move += 1;
 
         } else if (move % 2 === 0) {
-            $(this, "span").append("O");
-            if ($(this, "span").html("O")) {
+            $(this).append("O");
+            if ($(this).html("O")) {
                 $(this).off('click');
             }
             move += 1;
@@ -81,7 +82,7 @@ $(document).ready(function () {
 
 
 //Initial Start
-    box.on("click", playGame);
+    box.on('click', playGame);
     box.on('click', checkForWinner);
 
 });
