@@ -14,7 +14,6 @@ $(document).ready(function () {
         for (let i = 1; i <= 9; i++){
             $('#box' + i).html('');
         }
-        XWin.html('Your Turn!');
         OWin.html('');
         box.off('click', playGame);
         box.off('click', checkForWinner);
@@ -25,6 +24,7 @@ $(document).ready(function () {
 
     $('#two-player').on('click', function () {
         $('#game-container').removeClass('invisible');
+        XWin.html('Your Turn!');
         $('#player-btns').addClass('invisible');
     });
 
@@ -81,10 +81,10 @@ $(document).ready(function () {
 
     function results(boxNum){
         if (boxNum.html() === 'X'){
-            XWin.html('Congrats player X! You won!');
+            XWin.html('Congrats! You won!');
             OWin.html('You Lost!')
         } else {
-            OWin.html('Congrats player O! You won!');
+            OWin.html('Congrats! You won!');
             XWin.html('You Lost!')
         }
         box.off('click');
