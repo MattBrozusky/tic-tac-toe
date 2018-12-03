@@ -4,17 +4,20 @@ $(document).ready(function () {
 //Global constants
     const box = $(".box");
     let move = 1;
-
+    let XWin = $('#player-x');
+    let OWin = $('#player-o');
 
 // Reset and play Buttons
     $('#reset').on('click', function () {
         $('#player-btns').removeClass('invisible');
         $('#game-container').addClass('invisible');
-        box.off('click', playGame);
-        box.off('click', checkForWinner);
         for (let i = 1; i <= 9; i++){
             $('#box' + i).html('');
         }
+        XWin.html('Your Turn!');
+        OWin.html('');
+        box.off('click', playGame);
+        box.off('click', checkForWinner);
         move = 1;
         box.on('click', playGame);
         box.on('click', checkForWinner);
@@ -33,13 +36,17 @@ $(document).ready(function () {
                 $(this).off('click');
             }
             move += 1;
+            OWin.html('Your Turn!');
+            XWin.html('');
 
-        } else if (move % 2 === 0) {
+        } else {
             $(this).append("O");
             if ($(this).html("O")) {
                 $(this).off('click');
             }
             move += 1;
+            XWin.html('Your Turn!');
+            OWin.html('');
         }
     }
 
@@ -47,39 +54,41 @@ $(document).ready(function () {
         let box1 = $('#box1'), box2 = $('#box2'), box3 = $('#box3'), box4 = $('#box4'), box5 = $('#box5'), box6 = $('#box6'), box7 = $('#box7'), box8 = $('#box8'), box9 = $('#box9');
 
         if (box1.html() === "X" && box2.html() === "X" && box3.html() === "X" || box1.html() === "O" && box2.html() === "O" && box3.html() === "O"){
-            console.log(`Congrats ${box1.html()}! You won!`);
-            box.off('click');
+            results(box1);
 
         } else if (box4.html() === "X" && box5.html() === "X" && box6.html() === "X" || box4.html() === "O" && box5.html() === "O" && box6.html() === "O"){
-            console.log(`Congrats ${box4.html()}! You won!`);
-            box.off('click');
+            results(box4);
 
         } else if (box7.html() === "X" && box8.html() === "X" && box9.html() === "X" || box7.html() === "O" && box8.html() === "O" && box9.html() === "O"){
-            console.log(`Congrats ${box7.html()}! You won!`);
-            box.off('click');
+            results(box7);
 
         } else if (box1.html() === "X" && box4.html() === "X" && box7.html() === "X" || box1.html() === "O" && box4.html() === "O" && box7.html() === "O"){
-            console.log(`Congrats ${box1.html()}! You won!`);
-            box.off('click');
+            results(box1);
 
         } else if (box2.html() === "X" && box5.html() === "X" && box8.html() === "X" || box2.html() === "O" && box5.html() === "O" && box8.html() === "O"){
-            console.log(`Congrats ${box2.html()}! You won!`);
-            box.off('click');
+            results(box2);
 
         } else if (box3.html() === "X" && box6.html() === "X" && box9.html() === "X" || box3.html() === "O" && box6.html() === "O" && box9.html() === "O"){
-            console.log(`Congrats ${box3.html()}! You won!`);
-            box.off('click');
+            results(box3);
 
         } else if (box1.html() === "X" && box5.html() === "X" && box9.html() === "X" || box1.html() === "O" && box5.html() === "O" && box9.html() === "O"){
-            console.log(`Congrats ${box1.html()}! You won!`);
-            box.off('click');
+            results(box1);
 
         } else if (box3.html() === "X" && box5.html() === "X" && box7.html() === "X" || box3.html() === "O" && box5.html() === "O" && box7.html() === "O"){
-            console.log(`Congrats ${box3.html()}! You won!`);
-            box.off('click');
+            results(box3);
         }
     }
 
+    function results(boxNum){
+        if (boxNum.html() === 'X'){
+            XWin.html('Congrats player X! You won!');
+            OWin.html('You Lost!')
+        } else {
+            OWin.html('Congrats player O! You won!');
+            XWin.html('You Lost!')
+        }
+        box.off('click');
+    }
 
 //Initial Start
     box.on('click', playGame);
