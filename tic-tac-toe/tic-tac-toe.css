@@ -4,6 +4,9 @@ body {
     font-family: Copperplate, "Copperplate Gothic Light", fantasy;
 }
 
+.btn {
+    width: 80%;
+}
 
 /******************
 Box Style
@@ -55,10 +58,5 @@ Box Style
 .box {
     height: 20vh;
     background-color: rgba(255, 255, 255, 0.25);
-}
-
-.letter-style {
     font-size: 80px;
 }
-
-
