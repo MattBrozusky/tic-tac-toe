@@ -102,7 +102,6 @@ $(document).ready(function () {
 
 //AI for game
 
-
     function playGame1Player() {
         if (move % 2 === 1) {
             $(this).append("X");
@@ -168,15 +167,6 @@ $(document).ready(function () {
                 return true;
             }
         }
-        // if(box1.html() === check && box5.html() === check || box5.html() === check && box9.html() === check || box1.html() === check && box9.html() === check){
-        //     for (let i = 0; i <= 8; i += 4){
-        //         if (boxes[i].html() !== 'X' && boxes[i].html() !== 'O'){
-        //             boxes[i].html('O');
-        //             boxes[i].off('click');
-        //             return true;
-        //         }
-        //     }
-        // }
         if(box3.html() === check && box5.html() === check || box5.html() === check && box7.html() === check || box3.html() === check && box7.html() === check){
             for (let i = 2; i <= 6; i += 2){
                 if (boxes[i].html() !== 'X' && boxes[i].html() !== 'O'){
