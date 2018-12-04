@@ -117,43 +117,93 @@ $(document).ready(function () {
             if (XWin.html() === 'Congrats!<br>You won!'){
                 return;
             }
-
-            let aiChoice = Math.floor((Math.random() * 8));
-            while(boxes[aiChoice].html() === 'X' || boxes[aiChoice].html() === 'O'){
-                aiChoice = Math.floor((Math.random() * 8));
-            }
-            boxes[aiChoice].html('O');
-
+            AI();
             move += 1;
             XWin.html('Your Turn!');
             OWin.html('');
             checkForWinner();
         }
+    }
 
+    function baseAi(check) {
+        if (box1.html() === check && box2.html() === check || box2.html() === check && box3.html() === check || box1.html() === check && box3.html() === check) {
+            horizontalAiCheck(0, 3);
+            return true;
 
+        } else if (box4.html() === check && box5.html() === check || box5.html() === check && box6.html() === check || box4.html() === check && box6.html() === check) {
+            horizontalAiCheck(3, 6);
+            return true;
+
+        } else if (box7.html() === check && box8.html() === check || box8.html() === check && box9.html() === check || box7.html() === check && box9.html() === check) {
+            horizontalAiCheck(6, 9);
+            return true;
+
+        } else if (box1.html() === check && box4.html() === check || box4.html() === check && box7.html() === check || box1.html() === check && box7.html() === check){
+            verticalAiCheck(0, 6);
+            return true;
+
+        } else if (box2.html() === check && box5.html() === check || box5.html() === check && box8.html() === check || box2.html() === check && box8.html() === check){
+            verticalAiCheck(1, 7);
+            return true;
+
+        } else if (box3.html() === check && box6.html() === check || box6.html() === check && box9.html() === check || box3.html() === check && box9.html() === check){
+            verticalAiCheck(2, 8);
+            return true;
+
+        } else if(box1.html() === check && box5.html() === check || box5.html() === check && box9.html() === check || box1.html() === check && box9.html() === check){
+
+            for (let i = 0; i <= 8; i += 4){
+                if (boxes[i].html() !== 'X' && boxes[i].html() !== 'O'){
+                    boxes[i].html('O');
+                    return true;
+                }
+            }
+
+        } else if(box3.html() === check && box5.html() === check || box5.html() === check && box7.html() === check || box3.html() === check && box7.html() === check){
+
+            for (let i = 2; i <= 6; i += 2){
+                if (boxes[i].html() !== 'X' && boxes[i].html() !== 'O'){
+                    boxes[i].html('O');
+                    return true;
+                }
+            }
+        }
     }
 
 
+    function horizontalAiCheck(num1, num2) {
+        for (let i = num1; i < num2; i++){
+            if (boxes[i].html() !== 'X' && boxes[i].html() !== 'O'){
+                return boxes[i].html('O');
+            }
+        }
+    }
 
+    function verticalAiCheck(num1, num2) {
+        for (let i = num1; i <= num2; i += 3){
+            if (boxes[i].html() !== 'X' && boxes[i].html() !== 'O'){
+                return boxes[i].html('O');
+            }
+        }
+    }
 
+    function AI() {
+        if (move === 2 && box5.html() === ''){
+            return box5.html('O');
 
+        } else if (move === 2) {
+            return box1.html('O');
+        } else if (baseAi('O')){
+            return;
+        } else if (baseAi('X')){
+            return;
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        let aiChoice = Math.floor((Math.random() * 8));
+        while(boxes[aiChoice].html() === 'X' || boxes[aiChoice].html() === 'O'){
+            aiChoice = Math.floor((Math.random() * 8));
+        }
+        boxes[aiChoice].html('O');
+    }
 
 });
