@@ -13,7 +13,7 @@ $(document).ready(function () {
 // Reset and play Buttons
     $('#reset').on('click', function () {
         $('.player-btns').removeClass('invisible');
-        $('#game-container').addClass('invisible');
+        $('.game-container').addClass('invisible');
         for (let i = 1; i <= 9; i++){
             $('#box' + i).html('');
         }
@@ -25,7 +25,7 @@ $(document).ready(function () {
     });
 
     $('#two-player').on('click', function () {
-        $('#game-container').removeClass('invisible');
+        $('.game-container').removeClass('invisible');
         $('.player-btns').addClass('invisible');
         XWin.html('Your Turn!');
         box.on('click', playGame2Player);
@@ -33,7 +33,7 @@ $(document).ready(function () {
     });
 
     $('#one-player').on('click', function () {
-        $('#game-container').removeClass('invisible');
+        $('.game-container').removeClass('invisible');
         $('.player-btns').addClass('invisible');
         XWin.html('Your Turn!');
         box.on('click', playGame1Player);
