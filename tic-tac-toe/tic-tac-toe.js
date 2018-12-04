@@ -136,39 +136,48 @@ $(document).ready(function () {
         }
     }
 
-    //Make sure all cheks get made
+    //Either side of middle check
     function baseAi(check) {
         if (box1.html() === check && box2.html() === check || box2.html() === check && box3.html() === check || box1.html() === check && box3.html() === check) {
-            return horizontalAiCheck(0, 3);
-
-        } else if (box4.html() === check && box5.html() === check || box5.html() === check && box6.html() === check || box4.html() === check && box6.html() === check) {
-            return horizontalAiCheck(3, 6);
-
-        } else if (box7.html() === check && box8.html() === check || box8.html() === check && box9.html() === check || box7.html() === check && box9.html() === check) {
-            return horizontalAiCheck(6, 9);
-
-        } else if (box1.html() === check && box4.html() === check || box4.html() === check && box7.html() === check || box1.html() === check && box7.html() === check){
-            return verticalAiCheck(0, 6);
-
-        } else if (box2.html() === check && box5.html() === check || box5.html() === check && box8.html() === check || box2.html() === check && box8.html() === check){
-            return verticalAiCheck(1, 7);
-
-        } else if (box3.html() === check && box6.html() === check || box6.html() === check && box9.html() === check || box3.html() === check && box9.html() === check){
-            return verticalAiCheck(2, 8);
-
-        } else if(box1.html() === check && box5.html() === check || box5.html() === check && box9.html() === check || box1.html() === check && box9.html() === check){
-
-            for (let i = 0; i <= 8; i += 4){
-                if (boxes[i].html() !== 'X' && boxes[i].html() !== 'O'){
-                    boxes[i].html('O');
-                    boxes[i].off('click');
-                    return true;
-                }
+            if (horizontalAiCheck(0, 3)){
+                return true;
             }
-            return false;
-
-        } else if(box3.html() === check && box5.html() === check || box5.html() === check && box7.html() === check || box3.html() === check && box7.html() === check){
-
+        }
+        if (box4.html() === check && box5.html() === check || box5.html() === check && box6.html() === check || box4.html() === check && box6.html() === check) {
+            if (horizontalAiCheck(3, 6)){
+                return true;
+            }
+        }
+        if (box7.html() === check && box8.html() === check || box8.html() === check && box9.html() === check || box7.html() === check && box9.html() === check) {
+            if (horizontalAiCheck(6, 9)){
+                return true;
+            }
+        }
+        if (box1.html() === check && box4.html() === check || box4.html() === check && box7.html() === check || box1.html() === check && box7.html() === check){
+            if (verticalAiCheck(0, 6)){
+                return true;
+            }
+        }
+        if (box2.html() === check && box5.html() === check || box5.html() === check && box8.html() === check || box2.html() === check && box8.html() === check){
+            if (verticalAiCheck(1, 7)){
+                return true;
+            }
+        }
+        if (box3.html() === check && box6.html() === check || box6.html() === check && box9.html() === check || box3.html() === check && box9.html() === check){
+            if (verticalAiCheck(2, 8)){
+                return true;
+            }
+        }
+        // if(box1.html() === check && box5.html() === check || box5.html() === check && box9.html() === check || box1.html() === check && box9.html() === check){
+        //     for (let i = 0; i <= 8; i += 4){
+        //         if (boxes[i].html() !== 'X' && boxes[i].html() !== 'O'){
+        //             boxes[i].html('O');
+        //             boxes[i].off('click');
+        //             return true;
+        //         }
+        //     }
+        // }
+        if(box3.html() === check && box5.html() === check || box5.html() === check && box7.html() === check || box3.html() === check && box7.html() === check){
             for (let i = 2; i <= 6; i += 2){
                 if (boxes[i].html() !== 'X' && boxes[i].html() !== 'O'){
                     boxes[i].html('O');
@@ -176,7 +185,6 @@ $(document).ready(function () {
                     return true;
                 }
             }
-            return false;
         }
     }
 
@@ -201,6 +209,34 @@ $(document).ready(function () {
         }
     }
 
+    function nextLevelAiCheck() {
+        if (box1.html() === 'X' && box9.html() === 'X' || box3.html() === 'X' && box7.html() === 'X'){
+            box2.html('O');
+            box2.off('click');
+            return true;
+        }
+        if (box2.html() === 'X' && box9.html() === 'X' || box6.html() === 'X' && box1.html() === 'X' || box2.html() === 'X' && box6.html() === 'X'){
+            box3.html('O');
+            box3.off('click');
+            return true;
+        }
+        if (box8.html() === 'X' && box1.html() === 'X' || box4.html() === 'X' && box9.html() === 'X' || box4.html() === 'X' && box8.html() === 'X'){
+            box7.html('O');
+            box7.off('click');
+            return true;
+        }
+        if (box3.html() === 'X' && box4.html() === 'X' || box2.html() === 'X' && box7.html() === 'X' || box2.html() === 'X' && box4.html() === 'X'){
+            box1.html('O');
+            box1.off('click');
+            return true;
+        }
+        if (box3.html() === 'X' && box8.html() === 'X' || box6.html() === 'X' && box7.html() === 'X' || box8.html() === 'X' && box6.html() === 'X'){
+            box9.html('O');
+            box9.off('click');
+            return true;
+        }
+    }
+
     function AI() {
         if (move === 2 && box5.html() === ''){
             box5.html('O');
@@ -209,9 +245,15 @@ $(document).ready(function () {
         } else if (move === 2) {
             box1.html('O');
             return box1.off('click');
-        } else if (baseAi('O')){
+        } else if (move === 4){
+            if (nextLevelAiCheck()){
+                return
+            }
+        }
+        if (baseAi('O')){
             return;
-        } else if (baseAi('X')){
+        }
+        if (baseAi('X')){
             return;
         }
 
@@ -222,5 +264,7 @@ $(document).ready(function () {
         boxes[aiChoice].html('O');
         boxes[aiChoice].off('click');
     }
+
+
 
 });
