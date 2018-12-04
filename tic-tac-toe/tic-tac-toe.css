@@ -60,3 +60,7 @@ Box Style
     background-color: rgba(255, 255, 255, 0.25);
     font-size: 80px;
 }
+
+.small-box {
+    height: 8rem;
+}
