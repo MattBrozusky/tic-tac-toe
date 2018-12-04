@@ -167,6 +167,15 @@ $(document).ready(function () {
                 return true;
             }
         }
+        if(box1.html() === check && box5.html() === check || box5.html() === check && box9.html() === check || box1.html() === check && box9.html() === check){
+            for (let i = 0; i <= 8; i += 4){
+                if (boxes[i].html() !== 'X' && boxes[i].html() !== 'O'){
+                    boxes[i].html('O');
+                    boxes[i].off('click');
+                    return true;
+                }
+            }
+        }
         if(box3.html() === check && box5.html() === check || box5.html() === check && box7.html() === check || box3.html() === check && box7.html() === check){
             for (let i = 2; i <= 6; i += 2){
                 if (boxes[i].html() !== 'X' && boxes[i].html() !== 'O'){
@@ -205,7 +214,7 @@ $(document).ready(function () {
             box2.off('click');
             return true;
         }
-        if (box2.html() === 'X' && box9.html() === 'X' || box6.html() === 'X' && box1.html() === 'X' || box2.html() === 'X' && box6.html() === 'X'){
+        if (box2.html() === 'X' && box9.html() === 'X' || box6.html() === 'X' && box1.html() === 'X' || box2.html() === 'X' && box6.html() === 'X' || box5.html() === 'X' && box9.html() === 'X'){
             box3.html('O');
             box3.off('click');
             return true;
